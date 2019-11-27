@@ -14,8 +14,31 @@ def write_token_to_file(string):
     file.write(string)
     file.close()
 
+def read_token_from_file(filename): 
+    file = open(filename, "r")
+    return file.readline()
 
-def client_auth():
+def resolvetoken():
+    oauth_token = read_token_from_file("token.txt")
+
+    if not oauth_token:
+        oauth_token = client_auth(oauth_token)
+        write_token_to_file(oauth_token)
+    else: 
+        if test_token(oauth_token): 
+            return oauth_token
+        else: 
+            oauth_token = client_auth(oauth_token)
+            write_token_to_file(oauth_token)
+    return oauth_token
+
+
+def test_token(oauth_token): 
+    url = "https://api.spotify.com/v1/me/player"
+    data = requests.get(url, headers={"Authorization": 'Bearer ' + oauth_token})
+    return (data.status_code == 200)
+
+def client_auth(oauth_token):
     token = util.prompt_for_user_token(username,scopes,client_id=client_id,client_secret=client_secret,redirect_uri='https://github.com/shmam')
     return token
 
@@ -71,11 +94,10 @@ def printPlayButtons(track_array):
         print(element)
 
 def main():
-    oauth_token = client_auth()
-    write_token_to_file(oauth_token)
+    oauth_token = resolvetoken()
     current_track = getMyCurrentPlayback(oauth_token)
     past_tracks = getMyRecentTracks(oauth_token)
-    printPlayButtons(past_tracks)
+    print(current_track)
     return 0
 
 if __name__ == '__main__':
