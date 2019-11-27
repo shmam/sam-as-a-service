@@ -67,7 +67,7 @@ def getMyCurrentPlayback():
             "track_name": track_name, 
             "track_uri": track_uri, 
             "track_external_url": track_external_url, 
-            "artists_name": artists_name
+            "artists_name": artists_name[:-1]
         }
         return current_track 
     else:
