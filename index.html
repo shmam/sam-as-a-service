@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Sam-as-a-service</title>
   <meta name="author" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,31 @@
 <body>
 
   <p>Hello, world!</p>
+  <div id="div1"><p>...</p></div>
+
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="js/script.js"></script>
+  <script>
+    $.ajax({
+        type: 'GET',
+        url: "http://ec2-174-129-187-79.compute-1.amazonaws.com:5000/current_track", 
+        contentType: 'application/json',
+        dataType:'json',
+        responseType:'application/json',
+        xhrFields: {
+          withCredentials: false
+        },
+        headers: {
+          'Access-Control-Allow-Credentials' : true,
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Methods':'GET',
+          'Access-Control-Allow-Headers':'application/json',
+        },
+        success: function(result){
+          console.log(result)
+        }
+      });
+  </script>
 </body>
 
 </html>
