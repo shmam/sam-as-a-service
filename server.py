@@ -16,4 +16,4 @@ def get_past_track():
     return Response(json.dumps({"tracks": getMyRecentTracks()}), status=200, mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False)
+    app.run(host='0.0.0.0', port=80, debug=False)
