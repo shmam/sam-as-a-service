@@ -43,7 +43,8 @@ def client_auth(oauth_token):
     return token
 
 
-def getMyCurrentPlayback(oauth_token):
+def getMyCurrentPlayback():
+    oauth_token = resolvetoken()
     url = "https://api.spotify.com/v1/me/player"
     data = requests.get(url, headers={"Authorization": 'Bearer ' + oauth_token})
     if data.status_code == 200: 
@@ -68,7 +69,8 @@ def getMyCurrentPlayback(oauth_token):
         return "user is not playing any tracks"
 
 
-def getMyRecentTracks(oauth_token): 
+def getMyRecentTracks(): 
+    oauth_token = resolvetoken()
     url = "https://api.spotify.com/v1/me/player/recently-played"
     data = requests.get(url, headers={"Authorization": 'Bearer ' + oauth_token}).json()
     tracks = []
