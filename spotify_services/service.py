@@ -16,7 +16,12 @@ def write_token_to_file(string):
 
 def read_token_from_file(filename): 
     file = open(filename, "r")
-    return file.readline()
+    data = file.readline()
+
+    if isinstance(data, bytes): 
+        data = data.decode('ascii')
+        
+    return data 
 
 def resolvetoken():
     oauth_token = read_token_from_file("token.txt")
