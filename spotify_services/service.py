@@ -60,14 +60,14 @@ def getMyCurrentPlayback():
         track_external_url = data['item']['external_urls']['spotify']
         artists_name = ""
         for i in data['item']['artists']: 
-            artists_name += (i['name'] + ",")
+            artists_name += (i['name'] + ", ")
 
         current_track  = { 
             "track_id" : track_id, 
             "track_name": track_name, 
             "track_uri": track_uri, 
             "track_external_url": track_external_url, 
-            "artists_name": artists_name[:-1]
+            "artists_name": artists_name[:-2]
         }
         return current_track 
     else:
@@ -88,11 +88,9 @@ def getMyRecentTracks():
             "track_name": item['track']['name'], 
             "track_uri": item['track']['uri'], 
             "track_external_url": item['track']['external_urls']['spotify'], 
-            "artists_name": artists_name
+            "artists_name": artists_name[:-1]
         }
         tracks.append(track) 
-
-    # print(tracks)
     return tracks
 
 def printPlayButtons(track_array):
