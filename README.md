@@ -6,4 +6,4 @@
 
 I love cloud computing! Why not take the idea of DaaS but make it extremly personal and specific information highly available on a global scale? 
 
-Built with @spotify, Docker, AWS and @flask
+Built with Spotify, Docker, AWS and Flask
