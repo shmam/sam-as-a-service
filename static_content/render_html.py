@@ -28,7 +28,7 @@ def generate_html(current_track_obj, past_track_list):
         <ul>"""
 
     for i in range(0,5): 
-        html_string_past += "<li>{0} by {1}</li>".format(past_track_list[i]["track_name"], past_track_list[i]["artists_name"])
+        html_string_past += """<li><a href="{0}">{1}</a> by {2}</li>""".format(past_track_list[i]["track_external_url"], past_track_list[i]["track_name"], past_track_list[i]["artists_name"])
     html_string_past += "</ul>"
 
     html_string_ending = """    
