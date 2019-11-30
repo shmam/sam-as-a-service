@@ -4,5 +4,6 @@ lib
 include
 share
 etc
+env
 __pycache__
 *.cfg

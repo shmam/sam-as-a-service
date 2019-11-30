@@ -33,12 +33,18 @@ def generate_html(current_track_obj, past_track_list):
         html_string_past += """<li><a href="{0}">{1}</a> by {2}</li>""".format(past_track_list[i]["track_external_url"], past_track_list[i]["track_name"], past_track_list[i]["artists_name"])
     html_string_past += "</ul>"
 
+    html_string_image = """
+    <img href="/api/v1/past_tracks/analyze/img" alt="Chart" height="200" width="200">
+    """
+
     html_string_ending = """    
         <h4> API endpoints </h4>
         <ul> 
         <li><strong> <a href="/api/v1/current_track"> .../api/v1/current_track </a> </strong>: current track</li>
         <li><strong> <a href="/api/v1/past_tracks"> .../api/v1/past_tracks </a> </strong>: past 20 tracks </li>
+        <li><strong> <a href="/api/v1/past_tracks/analyze"> .../api/v1/past_tracks/analyze </a> </strong>: past 5 tracks audio analysis </li>
+        <li><strong> <a href="/api/v1/past_tracks/analyze/img"> .../api/v1/past_tracks/analyze/img </a> </strong>: radar chart of audio analysis </li>
         </ul>
         </body>
         </html>"""
-    return html_string_head + html_string_current_playing + html_string_past + html_string_ending
+    return html_string_head + html_string_current_playing + html_string_past +html_string_image+ html_string_ending

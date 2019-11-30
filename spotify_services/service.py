@@ -3,6 +3,10 @@ import json
 import spotipy
 import spotipy.util as util
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from math import pi
 
 client_id = "3dc7c13790354801bf68fe78f07d35da"
 client_secret = "c80bcac20daa4132905e93bc52f81fdc"
@@ -147,7 +151,6 @@ def generateRadarChart(avg_value):
         "acousticness" : 0,
         "danceability" : 0,
         "energy" : 0,
-        "instrumentalness" : 0,
         "liveness" : 0,
         "speechiness" : 0,
     }
@@ -155,6 +158,25 @@ def generateRadarChart(avg_value):
     for category in display_value.keys(): 
         display_value[category] = avg_value[category]
 
+    categories = list(display_value.keys())
+    values = list(display_value.values())
+
+    values += values[:1] # repeat the first value to close the circular graph
+    angles = [n / float(len(categories)) * 2 * pi for n in range(len(categories))]
+    angles += angles[:1]
+
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 8),subplot_kw=dict(polar=True))
+
+    plt.xticks(angles[:-1], categories, color='grey', size=12)
+    plt.yticks(np.arange(1, 2), ['1'],
+            color='grey', size=12)
+    plt.ylim(0, 1)
+    ax.set_rlabel_position(30)
+    
+    ax.plot(angles, values, linewidth=1, linestyle='solid')
+    ax.fill(angles, values, 'skyblue', alpha=0.4)
+    plt.title("Audio Analysis of Past 5 Tracks")
+    plt.savefig("img.png")
 
     return None
 
