@@ -28,7 +28,7 @@ def analyze_past_track():
     returning_data = recent_tracks_audio_features(getMyRecentTracks())
     return Response(json.dumps(returning_data), status=200, mimetype='application/json')
 
-@app.route('/api/v1/past_tracks/analyze/img' , methods=['GET'])
+@app.route('/api/v1/past_tracks/analyze/img.png' , methods=['GET'])
 def analyze_past_track_img():
     returning_data = recent_tracks_audio_features(getMyRecentTracks())
     generateRadarChart(returning_data)

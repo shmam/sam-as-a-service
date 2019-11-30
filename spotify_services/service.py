@@ -167,7 +167,7 @@ def generateRadarChart(avg_value):
 
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 8),subplot_kw=dict(polar=True))
 
-    plt.xticks(angles[:-1], categories, color='grey', size=12)
+    plt.xticks(angles[:-1], categories, color='grey', size=20)
     plt.yticks(np.arange(1, 2), ['1'],
             color='grey', size=12)
     plt.ylim(0, 1)
@@ -175,7 +175,7 @@ def generateRadarChart(avg_value):
     
     ax.plot(angles, values, linewidth=1, linestyle='solid')
     ax.fill(angles, values, 'skyblue', alpha=0.4)
-    plt.title("Audio Analysis of Past 5 Tracks")
+    plt.title("Generated Audio Analysis of Past 5 Tracks", size=20)
     plt.savefig("img.png")
 
     return None
