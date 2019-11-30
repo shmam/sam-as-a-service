@@ -2,5 +2,7 @@
 bin
 lib
 include
+share
+etc
 __pycache__
 *.cfg

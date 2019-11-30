@@ -21,5 +21,11 @@ def get_past_track():
     returning_data = {"tracks": getMyRecentTracks()}
     return Response(json.dumps(returning_data), status=200, mimetype='application/json')
 
+@app.route('/api/v1/past_tracks/analyze' , methods=['GET'])
+def analyze_past_track():
+    returning_data = recent_tracks_audio_features(getMyRecentTracks())
+    generateRadarChart(returning_data)
+    return Response(json.dumps(returning_data), status=200, mimetype='application/json')
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=False)
+    app.run(host='0.0.0.0', port=80, debug=True)
