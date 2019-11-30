@@ -8,7 +8,9 @@ def generate_html(current_track_obj, past_track_list):
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>body {font-family: Arial,Helvetica Neue,Helvetica,sans-serif;}</style>
+        <style>
+            body {font-family: Arial,Helvetica Neue,Helvetica,sans-serif;}
+        </style>
         </head> 
         <body>  
         <h1><u>Sam as a Service</u> ⚡️</h1> """

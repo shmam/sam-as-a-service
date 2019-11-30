@@ -3,10 +3,6 @@ import json
 import spotipy
 import spotipy.util as util
 
-# chart libraries
-import pandas as pd
-import plotly.express as px
-import plotly
 
 client_id = "3dc7c13790354801bf68fe78f07d35da"
 client_secret = "c80bcac20daa4132905e93bc52f81fdc"
@@ -154,14 +150,11 @@ def generateRadarChart(avg_value):
         "instrumentalness" : 0,
         "liveness" : 0,
         "speechiness" : 0,
-    } 
+    }
 
     for category in display_value.keys(): 
         display_value[category] = avg_value[category]
 
-    df = pd.DataFrame(dict(r=list(display_value.values()),theta=list(display_value.keys())))
-    fig = px.line_polar(df, r='r', theta='theta', line_close=True)
-    plotly.offline.plot(fig, image_filename="img", image='svg')
 
     return None
 
