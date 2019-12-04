@@ -7,3 +7,4 @@ etc
 env
 __pycache__
 *.cfg
+spotify_services/config.py

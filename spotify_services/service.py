@@ -3,13 +3,14 @@ import json
 import spotipy
 import spotipy.util as util
 
+from . import config as keys
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from math import pi
 
-client_id = "3dc7c13790354801bf68fe78f07d35da"
-client_secret = "c80bcac20daa4132905e93bc52f81fdc"
+client_id = keys.spotify_client_id
+client_secret = keys.spotify_client_secret
 grant_type = 'authorization_code'
 scopes = "user-read-recently-played user-read-playback-state"
 username = "sayuuuummmm"

@@ -1,3 +1,5 @@
+import random
+
 def generate_html(current_track_obj, past_track_list): 
     html_string_head = """
         <!DOCTYPE html>
@@ -34,8 +36,8 @@ def generate_html(current_track_obj, past_track_list):
     html_string_past += "</ul>"
 
     html_string_image = """
-    <img src="/api/v1/past_tracks/analyze/img.png" alt="Chart" height="350" width="350">
-    """
+    <img src="/api/v1/past_tracks/analyze/img.png?{}" alt="Chart" height="350" width="350">
+    """.format(str(random.randint(200000,300000)))
 
     html_string_ending = """    
         <h4> API endpoints </h4>
