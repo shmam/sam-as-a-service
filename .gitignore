@@ -8,3 +8,5 @@ env
 __pycache__
 *.cfg
 spotify_services/config.py
+.DS_Store
+static_content/.DS_Store
