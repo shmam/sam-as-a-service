@@ -1,0 +1,31 @@
+def generate_error_html(err): 
+    html = """
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+    <meta charset="utf-8">
+    <title>Sam-as-a-service</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+        font-family: Arial,Helvetica Neue,Helvetica,sans-serif; 
+        }
+    </style>
+    </head>
+
+    <body>
+        <h1>Uh oh! 🥵</h1>
+        <p>Looks like there was error or exception thrown by the service. <br> This stinks but it happens, I am not perfect. <br> If you see this up for a while would you mind
+            yelling at me on <a href="https://twitter.com/shmam_">twitter</a> and I can hop on to get it fixed. </p>
+        
+        <h4>Error:</h4>
+        <p style="font-family: Consolas,monaco,monospace;font-size:11px;">
+
+    """
+
+    html_end = """</p></body></html>"""
+
+    return html + repr(err) + html_end

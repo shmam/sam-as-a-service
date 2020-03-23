@@ -136,8 +136,11 @@ def recent_tracks_audio_features(recent_tracks):
 
     # Summation
     for item in data["audio_features"]: 
-        for category in avg_value.keys(): 
-            avg_value[category] += item[category]
+        for category in avg_value.keys():
+            try: 
+                avg_value[category] += item[category]
+            except TypeError: 
+                avg_value[category] += 0
     
     # Divide by the number of items to get the average
     for category in avg_value.keys(): 
